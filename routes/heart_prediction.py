@@ -27,16 +27,16 @@ Age: str=Form(...),
 
 ):
     try:
-        # ChestPainType=await decrypt_from_rsa_private_key(ChestPainType)
-        # Age=await decrypt_from_rsa_private_key(Age)
-        # RestingBloodPressure=await decrypt_from_rsa_private_key(RestingBloodPressure)
-        # SerumCholestoral=await decrypt_from_rsa_private_key(SerumCholestoral)
-        # FastingBloodSugar=await decrypt_from_rsa_private_key(FastingBloodSugar)
-        # RestingElectrocardiographicResults=await decrypt_from_rsa_private_key(RestingElectrocardiographicResults)
-        # MaximumHeartRateAchieved=await decrypt_from_rsa_private_key(MaximumHeartRateAchieved)
-        # ExerciseInducedAngina=await decrypt_from_rsa_private_key(ExerciseInducedAngina)
-        # Oldpeak=await decrypt_from_rsa_private_key(Oldpeak)
-        # Slope=await decrypt_from_rsa_private_key(Slope)
+        ChestPainType=await decrypt_from_rsa_private_key(ChestPainType)
+        Age=await decrypt_from_rsa_private_key(Age)
+        RestingBloodPressure=await decrypt_from_rsa_private_key(RestingBloodPressure)
+        SerumCholestoral=await decrypt_from_rsa_private_key(SerumCholestoral)
+        FastingBloodSugar=await decrypt_from_rsa_private_key(FastingBloodSugar)
+        RestingElectrocardiographicResults=await decrypt_from_rsa_private_key(RestingElectrocardiographicResults)
+        MaximumHeartRateAchieved=await decrypt_from_rsa_private_key(MaximumHeartRateAchieved)
+        ExerciseInducedAngina=await decrypt_from_rsa_private_key(ExerciseInducedAngina)
+        Oldpeak=await decrypt_from_rsa_private_key(Oldpeak)
+        Slope=await decrypt_from_rsa_private_key(Slope)
 
         response=await predict_heart_disease(
             Age,
@@ -50,14 +50,9 @@ Age: str=Form(...),
             ExerciseInducedAngina,
             Oldpeak,
             Slope,
+            public_key
         )
 
-
-        # keyword = await decrypt_from_rsa_private_key(keyword)
-
-
-
-        # response = await get_files_by_keyword(keyword, ownerId, db)
 
         return response
     except Exception as e:

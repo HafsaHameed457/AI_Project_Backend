@@ -32,6 +32,7 @@ async def predict_heart_disease(
             ExerciseInducedAngina: str,
             Oldpeak: str,
             Slope: str,
+            public_key:str
 
 ):
     try:
@@ -96,6 +97,9 @@ async def predict_heart_disease(
 
         # Predict the value
         predicted_value = lr.predict(data_scaled)
+        result="Heart Disease" if predicted_value[0] else "No Heart Disease"
+        result=await encrypt_from_rsa_public_key_string(public_key, result)
+
 
         # Print the prediction
 
@@ -103,7 +107,7 @@ async def predict_heart_disease(
             success=True,
             error="",
             message="Heart Disease Prediction",
-            content={"Predicted Value": "Heart Disease" if predicted_value[0] else "No Heart Disease" },
+            content={ "Prediction": result},
         )
         return JSONResponse(content=response_content.dict(), status_code=200)
     except Exception as e:
